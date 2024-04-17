@@ -3,16 +3,9 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Navbar from './Navbar';
 import Footer from './Footer';
-
-const Home = () => {
-  return <h2>Home</h2>;
-}
-
-const Converter = () => {
-  return <h2>Converter</h2>;
-}
+import Home from './Home';
+import Converter from './Converter';
 
 const App = () => {
   return (
