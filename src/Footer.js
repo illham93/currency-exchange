@@ -1,6 +1,6 @@
 import React from "react";
 
-class Navbar extends React.Component {
+class Footer extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -8,10 +8,10 @@ class Navbar extends React.Component {
     render() {
         return (
             <div class="text-center">
-                <span>Exchange Rates</span> | <span>Converter</span>
+                <span>Made by Devon Hamill</span> | <span>Altcademy</span>
             </div>
         )
     }
 }
 
-export default Navbar;
+export default Footer;
