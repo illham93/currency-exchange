@@ -1,9 +1,9 @@
 To do:
 
-- Make calculate function work both ways
-- Make it update when you change the currency as well
+
 - Style
 - Mobile format
+- Make some kind of loading screen, when you first load the page it stays blank
 
 
 Possible to do:

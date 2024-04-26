@@ -8,10 +8,10 @@ class CurrencyDropDown extends React.Component {
             currencies: [],
             error: ''
         };
-        this.handleChange = this.handleChange.bind(this);
+        this.dropDownChange = this.dropDownChange.bind(this);
     }
 
-    handleChange(event) {
+    dropDownChange(event) {
         const { onChange } = this.props;
         onChange(event.target.value);
     }
@@ -36,7 +36,7 @@ class CurrencyDropDown extends React.Component {
     render() {
         const { currencies, error } = this.state;
         return (
-            <select name="currencies" onChange={this.handleChange}>
+            <select name="currencies" onChange={this.dropDownChange}>
                 <option disabled selected value>--</option>
                 {(() => {
                     if (error) {
