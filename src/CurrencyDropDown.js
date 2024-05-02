@@ -35,21 +35,22 @@ class CurrencyDropDown extends React.Component {
 
     render() {
         const { currencies, error } = this.state;
+        const { selectedCurrency } = this.props;
         return (
-            <select name="currencies" onChange={this.dropDownChange}>
-                <option disabled defaultValue value>--</option>
-                {(() => {
-                    if (error) {
-                        return <option>{error}</option>;
-                    }
-                    if (currencies.length === 0) {
-                        return <option>Loading...</option>;
-                    }
-                    return currencies.map((currency) => {
-                        return <option key={currency} value={currency}>{currency}</option>;
-                    })
-                })()}
-            </select>
+                <select className="form-select" name="currencies" onChange={this.dropDownChange}>
+                    <option disabled selected value>--</option>
+                    {(() => {
+                        if (error) {
+                            return <option>{error}</option>;
+                        }
+                        if (currencies.length === 0) {
+                            return <option>Loading...</option>;
+                        }
+                        return currencies.filter(currency => currency !== selectedCurrency).map((currency) => {
+                            return <option key={currency} value={currency}>{currency}</option>;
+                        })
+                    })()}
+                </select>
         )
     }
 }

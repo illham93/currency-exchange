@@ -59,30 +59,43 @@ class Home extends React.Component {
 
         return (
             <div className="container text-center">
-                <h3>Currency Exchange Rates</h3>
+                <h1><strong>Currency Exchange Rates</strong></h1>
                 <p>Select base currency:</p>
-                <form onSubmit={this.handleSubmit}>
-                    <CurrencyDropDown onChange={this.handleChange} />
-                    <button type="submit">Go</button>
-                </form>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Currency</td>
-                            <td>Rate</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {(() => {
-                            if (error) {
-                                return <tr><td>{error}</td></tr>;
-                            }
-                            return results.map(([currency, rate]) => {
-                                return <CurrencyTable key={currency} currency={currency} rate={rate} />;
-                            })
-                        })()}
-                    </tbody>
-                </table>
+                <div className="row">
+                    <div className="col-md-6 offset-md-3">
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="input-group justify-content-center">
+                                <CurrencyDropDown onChange={this.handleChange} />
+                                <div className="input-group-append">
+                                    <button className="btn btn-outline-primary" type="submit">Go</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div className="row mt-2">
+                    <div className="col-md-6 offset-md-3">
+                        <table className="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>Currency</td>
+                                    <td>Rate</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {(() => {
+                                    if (error) {
+                                        return <tr><td>{error}</td></tr>;
+                                    }
+                                    return results.map(([currency, rate]) => {
+                                        return <CurrencyTable key={currency} currency={currency} rate={rate} />;
+                                    })
+                                })()}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
             </div>
         )
     }

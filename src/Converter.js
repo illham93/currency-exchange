@@ -82,13 +82,15 @@ class Converter extends React.Component {
     }
 
     render() {
+        const {currency1, currency2} = this.state;
+
         return (
             <div className="container text-center">
-                <h3>Converter</h3>
+                <h1><strong>Currency Converter</strong></h1>
                 <p>Select two currencies to make a conversion:</p>
                 <form>
-                    <CurrencyDropDown id="currency1" onChange={(value) => this.handleChange('currency1', value)} />
-                    <CurrencyDropDown id="currency2" onChange={(value) => this.handleChange('currency2', value)} />
+                    <CurrencyDropDown id="currency1" selectedCurrency={currency2} onChange={(value) => this.handleChange('currency1', value)} />
+                    <CurrencyDropDown id="currency2" selectedCurrency={currency1} onChange={(value) => this.handleChange('currency2', value)} />
                     <br></br>
                     <input id="amount1" onChange={(e) => this.calculate('currency1', e.target.value)} type="number"></input>
                     <input id="amount2" onChange={(e) => this.calculate('currency2', e.target.value)} type="number"></input>

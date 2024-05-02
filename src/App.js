@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
+import Navbar from './Navbar';
 import Footer from './Footer';
 import Home from './Home';
 import Converter from './Converter';
@@ -11,10 +12,7 @@ const App = () => {
   return (
     <>
       <Router>
-        <nav className="text-center">
-          <Link to="/">Home</Link>
-          <Link to="/Converter/">Converter</Link>
-        </nav>
+        <Navbar/>
         <Switch>
           <Route path="/Converter/" component={Converter} />
           <Route path="/" component={Home} />

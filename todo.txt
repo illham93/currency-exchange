@@ -1,11 +1,11 @@
 To do:
 
-
 - Style
+    - Converter page
+    - Footer
 - Mobile format
-- When the same two currencies are selected nothing updates
 
-
+    
 Possible to do:
 
 - On converter, make inputs only editable once two countries have been selected
