@@ -37,7 +37,7 @@ class CurrencyDropDown extends React.Component {
         const { currencies, error } = this.state;
         return (
             <select name="currencies" onChange={this.dropDownChange}>
-                <option disabled selected value>--</option>
+                <option disabled defaultValue value>--</option>
                 {(() => {
                     if (error) {
                         return <option>{error}</option>;

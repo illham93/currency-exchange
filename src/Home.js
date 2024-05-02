@@ -58,7 +58,7 @@ class Home extends React.Component {
         const { results, error } = this.state;
 
         return (
-            <div class="container text-center">
+            <div className="container text-center">
                 <h3>Currency Exchange Rates</h3>
                 <p>Select base currency:</p>
                 <form onSubmit={this.handleSubmit}>
@@ -67,8 +67,10 @@ class Home extends React.Component {
                 </form>
                 <table>
                     <thead>
-                        <td>Currency</td>
-                        <td>Rate</td>
+                        <tr>
+                            <td>Currency</td>
+                            <td>Rate</td>
+                        </tr>
                     </thead>
                     <tbody>
                         {(() => {

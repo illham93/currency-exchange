@@ -3,7 +3,7 @@ To do:
 
 - Style
 - Mobile format
-- Make some kind of loading screen, when you first load the page it stays blank
+- When the same two currencies are selected nothing updates
 
 
 Possible to do:

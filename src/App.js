@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import Footer from './Footer';
 import Home from './Home';
@@ -11,12 +11,14 @@ const App = () => {
   return (
     <>
       <Router>
-        <nav class="text-center">
+        <nav className="text-center">
           <Link to="/">Home</Link>
           <Link to="/Converter/">Converter</Link>
         </nav>
-        <Route path="/" exact component={Home} />
-        <Route path="/Converter/" component={Converter} />
+        <Switch>
+          <Route path="/Converter/" component={Converter} />
+          <Route path="/" component={Home} />
+        </Switch>
     </Router>
     <Footer />
     </>
