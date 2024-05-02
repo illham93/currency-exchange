@@ -83,7 +83,7 @@ class Converter extends React.Component {
 
     render() {
         return (
-            <div class="container text-center">
+            <div className="container text-center">
                 <h3>Converter</h3>
                 <p>Select two currencies to make a conversion:</p>
                 <form>
