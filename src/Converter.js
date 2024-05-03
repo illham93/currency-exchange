@@ -87,13 +87,21 @@ class Converter extends React.Component {
         return (
             <div className="container text-center">
                 <h1><strong>Currency Converter</strong></h1>
-                <p>Select two currencies to make a conversion:</p>
+                <p className="mb-4">Select two currencies to make a conversion:</p>
                 <form>
-                    <CurrencyDropDown id="currency1" selectedCurrency={currency2} onChange={(value) => this.handleChange('currency1', value)} />
-                    <CurrencyDropDown id="currency2" selectedCurrency={currency1} onChange={(value) => this.handleChange('currency2', value)} />
-                    <br></br>
-                    <input id="amount1" onChange={(e) => this.calculate('currency1', e.target.value)} type="number"></input>
-                    <input id="amount2" onChange={(e) => this.calculate('currency2', e.target.value)} type="number"></input>
+                    <div className="row justify-content-center">
+                        <div className="col-12 col-md-4 d-flex flex-column align-items-center">
+                            <CurrencyDropDown id="currency1" selectedCurrency={currency2} onChange={(value) => this.handleChange('currency1', value)} />
+                            <input id="amount1" className="form-control mt-2" onChange={(e) => this.calculate('currency1', e.target.value)} type="number"></input>
+                        </div>
+                        <div id="equals" className="col-12 col-md-4 d-flex justify-content-center align-items-center">
+                            <i className="fa-regular fa-equals"></i>
+                        </div>
+                        <div className="col-12 col-md-4 d-flex flex-column align-items-center">
+                            <CurrencyDropDown id="currency2" selectedCurrency={currency1} onChange={(value) => this.handleChange('currency2', value)} />
+                            <input id="amount2" className="form-control mt-2" onChange={(e) => this.calculate('currency2', e.target.value)} type="number"></input>
+                        </div>
+                    </div>
                 </form>
             </div>
 

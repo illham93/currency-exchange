@@ -10,16 +10,19 @@ import Converter from './Converter';
 
 const App = () => {
   return (
-    <>
-      <Router>
-        <Navbar/>
-        <Switch>
-          <Route path="/Converter/" component={Converter} />
-          <Route path="/" component={Home} />
-        </Switch>
-    </Router>
-    <Footer />
-    </>
+    <div className='wrapper'>
+      <div className='content'>
+        <Router>
+          <Navbar/>
+          <Switch>
+            <Route path="/Converter/" component={Converter} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </Router>
+        <div className='spacer'></div>
+        <Footer/>
+      </div>
+    </div>
   );
 }
 

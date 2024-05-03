@@ -1,7 +1,6 @@
 To do:
 
 - Style
-    - Converter page
     - Footer
 - Mobile format
 
