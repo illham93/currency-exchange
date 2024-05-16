@@ -15,8 +15,8 @@ const App = () => {
         <Router>
           <Navbar/>
           <Switch>
-            <Route path="/Converter/" component={Converter} />
-            <Route path="/" component={Home} />
+            <Route path="/currency-exchange/Converter/" component={Converter} />
+            <Route path="/currency-exchange/" component={Home} />
           </Switch>
         </Router>
         <div className='spacer'></div>
