@@ -1,5 +1,6 @@
 import React from "react";
 import CurrencyDropDown from "./CurrencyDropDown";
+import Chart from "chart.js";
 
 class Converter extends React.Component {
     constructor(props) {
@@ -11,7 +12,56 @@ class Converter extends React.Component {
             currency2: '',
             error: '',
         };
+
+        this.chartRef = React.createRef();
     }
+
+    getHistoricalRates = (base, quote) => {
+        const endDate = new Date().toISOString().split('T')[0];
+        const startDate = new Date((new Date).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
+        fetch(`https://api.frankfurter.app/${startDate}..${endDate}?from=${base}&to=${quote}`)
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Request denied');
+            })
+            .then(data => {
+                if (data.error) {
+                throw new Error(data.error);
+                }
+                const chartLabels = Object.keys(data.rates);
+                const chartData = Object.values(data.rates).map(rate => rate[quote]);
+                const chartLabel = `${base}/${quote}`;
+                this.buildChart(chartLabels, chartData, chartLabel);
+            })
+            .catch(error => console.error(error.message));
+    }
+
+    buildChart = (labels, data, label) => {
+        const chartRef = this.chartRef.current.getContext("2d");
+        if (typeof this.chart !== "undefined") {
+            this.chart.destroy();
+        }
+        this.chart = new Chart(this.chartRef.current.getContext("2d"), {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [
+                    {
+                        label: label,
+                        data,
+                        fill: false,
+                        tension: 0,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+            }
+        })
+    }
+
 
     handleChange = (currency, value) => {
         console.log('changed');
@@ -72,13 +122,17 @@ class Converter extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { amount1, amount2 } = this.state;
+        const { amount1, amount2, currency1, currency2 } = this.state;
 
         if (prevState.amount1 !== amount1) {
             document.getElementById("amount1").value = amount1 || '';
         } else if (prevState.amount2 !== amount2) {
             document.getElementById("amount2").value = amount2 || '';
         }
+        
+        if (prevState.currency1 !== currency1 || prevState.currency2 !== currency2) {
+            this.getHistoricalRates(currency1, currency2);
+        }             
     }
 
     render() {
@@ -103,6 +157,7 @@ class Converter extends React.Component {
                         </div>
                     </div>
                 </form>
+                <canvas ref={this.chartRef} />
             </div>
 
         )
