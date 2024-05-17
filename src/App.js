@@ -12,11 +12,11 @@ const App = () => {
   return (
     <div className='wrapper'>
       <div className='content'>
-        <Router>
+        <Router basename="/currency-exchange">
           <Navbar/>
           <Switch>
-            <Route path="/currency-exchange/Converter/" component={Converter} />
-            <Route path="/currency-exchange/" component={Home} />
+            <Route path="/Converter" component={Converter} />
+            <Route path="/" component={Home} />
           </Switch>
         </Router>
         <div className='spacer'></div>
